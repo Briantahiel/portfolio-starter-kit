@@ -1,0 +1,49 @@
+---
+title: 'Markdown y MDX'
+publishedAt: '2024-05-14'
+summary: 'Los alcances del uso de Markdown en tus proyectos.'
+---
+## Markdown y MDX.
+
+Markdown es un lenguaje de marcado ligero que se utiliza para dar formato al texto. Le permite escribir utilizando sintaxis de texto plano y convertirlo a HTML estructuralmente válido. Se usa comúnmente para escribir contenido en sitios web y blogs.
+
+Entrada:
+
+I **love** using [Next.js](https://nextjs.org/)
+
+Salida: 
+```
+<p>I <strong>love</strong> using <a href="https://nextjs.org/">Next.js</a></p>
+```
+
+MDX es un superconjunto de Markdown que le permite escribir JSX directamente en sus archivos de Markdown. Es una forma poderosa de agregar interactividad dinámica e incorporar componentes de React dentro de su contenido.
+
+Next.js puede admitir tanto contenido MDX local dentro de su aplicación como archivos MDX remotos obtenidos dinámicamente en el servidor. El complemento Next.js se encarga de transformar los componentes Markdown y React en HTML, incluida la compatibilidad con el uso en componentes del servidor (el valor predeterminado en App Router).
+
+### Instalación de dependencias
+El paquete @next/mdx y los paquetes relacionados se utilizan para configurar Next.js para que pueda procesar Markdown y MDX. Obtiene datos de archivos locales, lo que le permite crear páginas con una extensión .md o .mdx, directamente en su directorio /pages o /app.
+
+Instale estos paquetes para renderizar MDX con Next.js:
+```
+npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+```
+### Configuración de next.config.mjs
+Actualiza el archivo next.config.mjs en la ruta de tu proyecto para configurarlo y poder usar MDX:
+```
+import createMDX from '@next/mdx'
+ 
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Configure `pageExtensions` to include markdown and MDX files
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  // Optionally, add any other Next.js config below
+}
+ 
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+})
+ 
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig)
+```
+Esto permite a los archivos .md y .mdx actuar como páginas, rutas o importaciones en tu aplicación.
