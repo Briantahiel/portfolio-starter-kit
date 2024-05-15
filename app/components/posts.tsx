@@ -5,7 +5,7 @@ export function BlogPosts() {
   let allBlogs = getBlogPosts()
 
   return (
-    <div>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
       {allBlogs
         .sort((a, b) => {
           if (
@@ -21,12 +21,15 @@ export function BlogPosts() {
             className="flex flex-col space-y-1 mb-4"
             href={`/blog/${post.slug}`}
           >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+            <div className="w-full flex flex-col md:space-x-0 border border-slate-200 p-4 rounded-md shadow-md ">
+              <p className="text-blue-500 dark:text-neutral-100 tracking-tight font-bold">
+                {post.metadata.title}
+              </p>
+              <p className="w-[100px] tabular-nums text-sm text-slate-500">
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
+              <p className='text-slate-600'>
+                {post.metadata.summary}
               </p>
             </div>
           </Link>

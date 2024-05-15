@@ -56,6 +56,9 @@ export default function Footer() {
       <p className="mt-8 text-neutral-600 dark:text-neutral-300">
         © {new Date().getFullYear()} MIT Licensed
       </p>
+      <div className="border-t border-slate-500 mt-6 py-6 text-center text-slate-600">
+        <h3>Developed by Brian</h3>
+      </div>
     </footer>
   )
 }
