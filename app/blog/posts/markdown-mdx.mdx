@@ -1,49 +1,47 @@
 ---
-title: 'Markdown y MDX'
+title: 'Markdown and MDX'
 publishedAt: '2024-05-14'
-summary: 'Comienza a usar Markdown y potencia tus proyectos con su uso.'
+summary: 'Start using Markdown and enhance your projects with its use.'
 ---
-## Markdown y MDX.
+## Markdown and MDX.
 
-Markdown es un lenguaje de marcado ligero que se utiliza para dar formato al texto. Le permite escribir utilizando sintaxis de texto plano y convertirlo a HTML estructuralmente válido. Se usa comúnmente para escribir contenido en sitios web y blogs.
+Markdown is a lightweight markup language used to format text. It allows you to write using plain text syntax and convert it to structurally valid HTML. It is commonly used for writing content on websites and blogs. 
 
-Entrada:
+Input:
 
 I **love** using [Next.js](https://nextjs.org/)
 
-Salida: 
-```
+Output:
+
 <p>I <strong>love</strong> using <a href="https://nextjs.org/">Next.js</a></p>
-```
 
-MDX es un superconjunto de Markdown que le permite escribir JSX directamente en sus archivos de Markdown. Es una forma poderosa de agregar interactividad dinámica e incorporar componentes de React dentro de su contenido.
+MDX is a superset of Markdown that allows you to write JSX directly in your Markdown files. It is a powerful way to add dynamic interactivity and incorporate React components within your content.
 
-Next.js puede admitir tanto contenido MDX local dentro de su aplicación como archivos MDX remotos obtenidos dinámicamente en el servidor. El complemento Next.js se encarga de transformar los componentes Markdown y React en HTML, incluida la compatibilidad con el uso en componentes del servidor (el valor predeterminado en App Router).
+Next.js can support both local MDX content within your application and remote MDX files dynamically fetched on the server. The Next.js plugin handles transforming Markdown and React components into HTML, including support for usage in server components (the default in App Router).
 
-### Instalación de dependencias
-El paquete @next/mdx y los paquetes relacionados se utilizan para configurar Next.js para que pueda procesar Markdown y MDX. Obtiene datos de archivos locales, lo que le permite crear páginas con una extensión .md o .mdx, directamente en su directorio /pages o /app.
+### Dependency Installation
+The @next/mdx package and related packages are used to set up Next.js to process Markdown and MDX. It retrieves data from local files, allowing you to create pages with a .md or .mdx extension directly in your /pages or /app directory.
 
-Instale estos paquetes para renderizar MDX con Next.js:
-```
-npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
-```
-### Configuración de next.config.mjs
-Actualiza el archivo next.config.mjs en la ruta de tu proyecto para configurarlo y poder usar MDX:
-```
+Install these packages to render MDX with Next.js:
+
+    npm install @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+
+### Configuring next.config.mjs
+Update the next.config.mjs file in your project path to configure it to use MDX:
+
+```jsx
 import createMDX from '@next/mdx'
- 
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
 }
- 
+
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
 })
- 
-// Merge MDX config with Next.js config
+
 export default withMDX(nextConfig)
 ```
-Esto permite a los archivos .md y .mdx actuar como páginas, rutas o importaciones en tu aplicación.
+
+This allows .md and .mdx files to act as pages, routes, or imports in your application.
+
